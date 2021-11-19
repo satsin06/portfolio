@@ -15,31 +15,39 @@ class _HomePageState extends State<HomePage> {
     var screenSize = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: PreferredSize(
-          preferredSize: Size(screenSize.width, 1000),
-          child: Column(
-            children: [
-              appBar(),
-              SizedBox(
-                height: screenSize.height / 10,
-              ),
-              myPortfolio(),
-              SizedBox(
-                height: screenSize.height / 15,
-              ),
-              const Divider(
-                thickness: 2.0,
-                height: 10,
-                indent: 30,
-                endIndent: 30,
-              ),
-              SizedBox(
-                height: screenSize.height / 15,
-              ),
-              recentWork(),
-            ],
-          ),
+      body: Container(
+        child: CustomScrollView(
+          slivers: [
+            SliverList(
+              delegate: SliverChildListDelegate([
+                PreferredSize(
+                  preferredSize: Size(screenSize.width, 1000),
+                  child: Column(
+                    children: [
+                      appBar(),
+                      SizedBox(
+                        height: screenSize.height / 10,
+                      ),
+                      myPortfolio(),
+                      SizedBox(
+                        height: screenSize.height / 15,
+                      ),
+                      const Divider(
+                        thickness: 2.0,
+                        height: 10,
+                        indent: 30,
+                        endIndent: 30,
+                      ),
+                      SizedBox(
+                        height: screenSize.height / 15,
+                      ),
+                      recentWork(),
+                    ],
+                  ),
+                ),
+              ]),
+            )
+          ],
         ),
       ),
     );
@@ -201,33 +209,23 @@ class _HomePageState extends State<HomePage> {
                 style: TextStyle(fontSize: 32, color: Colors.black54),
               ),
             ),
-            // GridView(
-            //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            //     crossAxisCount: 2,
-            //   ),
-            //   children: [
-            //     Text(
-            //       'falkfjl'
-            //     ),
-            //     Text('akjf lk'),
-            //     Text(
-            //         'falkfjl'
-            //     ),
-            //     Text('akjf lk'),
-            //     Text(
-            //         'falkfjl'
-            //     ),
-            //     Text('akjf lk'),
-            //     Text(
-            //         'falkfjl'
-            //     ),
-            //     Text('akjf lk'),
-            //     Text(
-            //         'falkfjl'
-            //     ),
-            //     Text('akjf lk'),
-            //   ],
-            // )
+            SliverGrid(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2),
+                delegate: SliverChildListDelegate(
+                  [
+                    Text('falkfjl'),
+                    Text('akjf lk'),
+                    Text('falkfjl'),
+                    Text('akjf lk'),
+                    Text('falkfjl'),
+                    Text('akjf lk'),
+                    Text('falkfjl'),
+                    Text('akjf lk'),
+                    Text('falkfjl'),
+                    Text('akjf lk'),
+                  ],
+                ))
           ],
         ),
       ),
