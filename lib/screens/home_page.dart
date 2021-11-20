@@ -15,40 +15,48 @@ class _HomePageState extends State<HomePage> {
     var screenSize = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Container(
-        child: CustomScrollView(
-          slivers: [
-            SliverList(
-              delegate: SliverChildListDelegate([
-                PreferredSize(
-                  preferredSize: Size(screenSize.width, 1000),
-                  child: Column(
-                    children: [
-                      appBar(),
-                      SizedBox(
-                        height: screenSize.height / 10,
-                      ),
-                      myPortfolio(),
-                      SizedBox(
-                        height: screenSize.height / 15,
-                      ),
-                      const Divider(
-                        thickness: 2.0,
-                        height: 10,
-                        indent: 30,
-                        endIndent: 30,
-                      ),
-                      SizedBox(
-                        height: screenSize.height / 15,
-                      ),
-                      recentWork(),
-                    ],
+      body: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: PreferredSize(
+              preferredSize: Size(screenSize.width, 1000),
+              child: Column(
+                children: [
+                  appBar(),
+                  SizedBox(
+                    height: screenSize.height / 10,
                   ),
-                ),
-              ]),
-            )
-          ],
-        ),
+                  myPortfolio(),
+                  SizedBox(
+                    height: screenSize.height / 15,
+                  ),
+                  const Divider(
+                    thickness: 2.0,
+                    height: 10,
+                    indent: 30,
+                    endIndent: 30,
+                  ),
+                  SizedBox(
+                    height: screenSize.height / 15,
+                  ),
+                  recentWork(),
+                ],
+              ),
+            ),
+          ),
+          SliverGrid(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 4,
+                  mainAxisSpacing: 4,
+                  childAspectRatio: (1 / 0.6)),
+              delegate: SliverChildListDelegate([
+                workTile(),
+                workTile(),
+                workTile(),
+                workTile(),
+              ]))
+        ],
       ),
     );
   }
@@ -81,7 +89,8 @@ class _HomePageState extends State<HomePage> {
                 TypewriterAnimatedText(
                   'SATYAM SINHA',
                   textStyle: const TextStyle(
-                    color: Colors.redAccent,
+                    //color: Colors.redAccent,
+                    color: Colors.blueAccent,
                     fontSize: 32.0,
                     fontWeight: FontWeight.bold,
                   ),
@@ -93,7 +102,7 @@ class _HomePageState extends State<HomePage> {
               alignment: Alignment.topCenter,
               child: CircleAvatar(
                 radius: 60.0,
-                backgroundImage: AssetImage('assets/avatar.jpg'),
+                backgroundImage: AssetImage('assets/profile_color.png'),
               ),
             ),
             SizedBox(
@@ -102,7 +111,8 @@ class _HomePageState extends State<HomePage> {
               child: DefaultTextStyle(
                 style: const TextStyle(
                   //fontSize: 32,
-                  color: Colors.red,
+                  //color: Colors.red,
+                  color: Colors.blue,
                 ),
                 child: SizedBox(
                   height: screenSize.height / 6,
@@ -140,7 +150,7 @@ class _HomePageState extends State<HomePage> {
                   'Flutter Developer',
                   maxLines: 1,
                   style: TextStyle(
-                    color: Colors.white54,
+                    color: Colors.blueGrey,
                     fontSize: 28.0,
                     fontFamily: 'Horizon',
                   ),
@@ -183,8 +193,7 @@ class _HomePageState extends State<HomePage> {
               height: 20,
             ),
             Text(
-              'My name is Satyam Sinha, I\'m a junior at Cluster Innovation Center, University of Delhi, '
-              'currently pursuing a Bachelor\'s degree in Information Technology and Mathematical Innovation.',
+              "My name is Satyam Sinha, I'm a junior at Cluster Innovation Center, University of Delhi, currently pursuing a Bachelor's degree in Information Technology and Mathematical Innovation.",
               style: TextStyle(fontSize: 20, color: Colors.black38),
             ),
           ],
@@ -200,8 +209,8 @@ class _HomePageState extends State<HomePage> {
       child: Container(
         alignment: Alignment.topLeft,
         child: Column(
-          children: [
-            const FittedBox(
+          children: const [
+            FittedBox(
               fit: BoxFit.fitWidth,
               child: Text(
                 'Recent Work',
@@ -209,26 +218,56 @@ class _HomePageState extends State<HomePage> {
                 style: TextStyle(fontSize: 32, color: Colors.black54),
               ),
             ),
-            SliverGrid(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2),
-                delegate: SliverChildListDelegate(
-                  [
-                    Text('falkfjl'),
-                    Text('akjf lk'),
-                    Text('falkfjl'),
-                    Text('akjf lk'),
-                    Text('falkfjl'),
-                    Text('akjf lk'),
-                    Text('falkfjl'),
-                    Text('akjf lk'),
-                    Text('falkfjl'),
-                    Text('akjf lk'),
-                  ],
-                ))
+            SizedBox(
+              height: 30,
+            ),
           ],
         ),
       ),
     );
+  }
+
+  Widget workTile() {
+    //var screenSize = MediaQuery.of(context).size;
+    return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 28.0),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            // image: DecorationImage(
+            //   image: AssetImage(
+            //     'assets/coachapp.PNG',
+            //   ),
+            //   fit: BoxFit.cover,
+            // ),
+          ),
+          child: Column(
+            children: [
+              Image.asset(
+                'assets/coachapp.PNG',
+                fit: BoxFit.cover,
+              ),
+              const Text('Coach App')
+            ],
+          ),
+        )
+        // Card(
+        //   shape: RoundedRectangleBorder(
+        //     borderRadius: BorderRadius.circular(16),
+        //   ),
+        //   color: Colors.black,
+        //   child: Stack(
+        //     children: [
+        //       Image.asset(
+        //         'assets/coachapp.PNG',
+        //         fit: BoxFit.cover,
+        //       ),
+        //       Positioned(child: Text('Coach App'))
+        //     ],
+        //   ),
+        //   shadowColor: Colors.blue,
+        //   elevation: 20,
+        // ),
+        );
   }
 }
