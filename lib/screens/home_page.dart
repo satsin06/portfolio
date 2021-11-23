@@ -54,7 +54,6 @@ class _HomePageState extends State<HomePage> {
                 workTile(),
                 workTile(),
                 workTile(),
-                workTile(),
               ]))
         ],
       ),
