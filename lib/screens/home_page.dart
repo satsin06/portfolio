@@ -297,7 +297,7 @@ class _HomePageState extends State<HomePage> {
                   primary: Colors.black,
                   textStyle: const TextStyle(fontSize: 20),
                 ),
-                onPressed: _launchURL,
+                onPressed: _resumeLink,
                 child: const Text('Resumé'),
               ),
             ]),
@@ -307,7 +307,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  _launchURL() async {
+  _resumeLink() async {
     const url =
         'https://drive.google.com/file/d/1H8gvog0lNfqWDLZ-VTOxBMkaxa96BRu3/view?usp=sharing';
     if (await canLaunch(url)) {
