@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/rendering.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -49,13 +50,16 @@ class _HomePageState extends State<HomePage> {
                   crossAxisCount: 2,
                   crossAxisSpacing: 4,
                   mainAxisSpacing: 4,
-                  childAspectRatio: (1 / 0.6)),
+                  childAspectRatio: (1 / 0.85)),
               delegate: SliverChildListDelegate([
                 workTile(),
                 workTile(),
                 workTile(),
                 workTile(),
-              ]))
+              ])),
+          SliverToBoxAdapter(
+            child: resumeButton(),
+          )
         ],
       ),
     );
@@ -230,44 +234,86 @@ class _HomePageState extends State<HomePage> {
   Widget workTile() {
     //var screenSize = MediaQuery.of(context).size;
     return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 28.0),
+        padding: const EdgeInsets.symmetric(horizontal: 36.0),
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
-            // image: DecorationImage(
-            //   image: AssetImage(
-            //     'assets/coachapp.PNG',
-            //   ),
-            //   fit: BoxFit.cover,
-            // ),
           ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.asset(
                 'assets/coachapp.PNG',
                 fit: BoxFit.cover,
               ),
-              const Text('Coach App')
+              const SizedBox(
+                height: 16,
+              ),
+              const FittedBox(
+                fit: BoxFit.fitWidth,
+                child: Text(
+                  'Coach App',
+                  maxLines: 1,
+                  style: TextStyle(fontSize: 28, color: Colors.black45),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const Text(
+                "Machine Learning from scratch in Python and Successfully analyzed on the EPL data set.",
+                style: TextStyle(fontSize: 16, color: Colors.black38),
+              ),
             ],
           ),
-        )
-        // Card(
-        //   shape: RoundedRectangleBorder(
-        //     borderRadius: BorderRadius.circular(16),
-        //   ),
-        //   color: Colors.black,
-        //   child: Stack(
-        //     children: [
-        //       Image.asset(
-        //         'assets/coachapp.PNG',
-        //         fit: BoxFit.cover,
-        //       ),
-        //       Positioned(child: Text('Coach App'))
-        //     ],
-        //   ),
-        //   shadowColor: Colors.blue,
-        //   elevation: 20,
-        // ),
-        );
+        ));
+  }
+
+  Widget resumeButton() {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(bottom: 32),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(4),
+            child: Stack(children: [
+              Positioned.fill(
+                child: Container(
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: <Color>[
+                        Color(0xFF0D47A1),
+                        Color(0xFF1976D2),
+                        Color(0xFF42A5F5),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              TextButton(
+                style: TextButton.styleFrom(
+                  padding: const EdgeInsets.all(16.0),
+                  primary: Colors.black,
+                  textStyle: const TextStyle(fontSize: 20),
+                ),
+                onPressed: _launchURL,
+                child: const Text('Resumé'),
+              ),
+            ]),
+          ),
+        ),
+      ],
+    );
+  }
+
+  _launchURL() async {
+    const url =
+        'https://drive.google.com/file/d/1H8gvog0lNfqWDLZ-VTOxBMkaxa96BRu3/view?usp=sharing';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }
