@@ -68,8 +68,8 @@ class _HomePageState extends State<HomePage> {
         height: screenSize.height / 1.5,
         decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(120),
-              bottomRight: Radius.circular(120),
+              bottomLeft: Radius.circular(100),
+              bottomRight: Radius.circular(100),
             ),
             image: DecorationImage(
               image: AssetImage(
@@ -106,38 +106,34 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             SizedBox(
-              width: screenSize.width / 3,
-              //height: 100,
+              width: screenSize.width,
+              height: screenSize.height / 6,
               child: DefaultTextStyle(
                 style: const TextStyle(
-                  //fontSize: 32,
-                  //color: Colors.red,
                   color: Colors.blue,
                 ),
-                child: SizedBox(
-                  height: screenSize.height / 6,
-                  child: FittedBox(
-                    fit: BoxFit.fitWidth,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          'I am ',
-                          maxLines: 1,
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        AnimatedTextKit(
-                          repeatForever: true,
-                          animatedTexts: [
-                            TypewriterAnimatedText('SATYAM', speed: speed),
-                            TypewriterAnimatedText('PROGRAMMER', speed: speed),
-                            TypewriterAnimatedText('DEVELOPER', speed: speed),
-                            TypewriterAnimatedText("SATSIN06", speed: speed),
-                          ],
-                        ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'I am ',
+                      maxLines: 1,
+                      style: TextStyle(color: Colors.white, fontSize: 36),
+                    ),
+                    AnimatedTextKit(
+                      repeatForever: true,
+                      animatedTexts: [
+                        TypewriterAnimatedText('SATYAM',
+                            speed: speed, textStyle: TextStyle(fontSize: 36)),
+                        TypewriterAnimatedText('PROGRAMMER',
+                            speed: speed, textStyle: TextStyle(fontSize: 36)),
+                        TypewriterAnimatedText('DEVELOPER',
+                            speed: speed, textStyle: TextStyle(fontSize: 36)),
+                        TypewriterAnimatedText("SATSIN06",
+                            speed: speed, textStyle: TextStyle(fontSize: 36)),
                       ],
                     ),
-                  ),
+                  ],
                 ),
               ),
             ),
