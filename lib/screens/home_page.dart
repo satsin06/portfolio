@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
           ),
           SliverGrid(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
+                  crossAxisCount: 1,
                   crossAxisSpacing: 4,
                   mainAxisSpacing: 4,
                   childAspectRatio: (1 / 0.85)),
@@ -55,9 +55,16 @@ class _HomePageState extends State<HomePage> {
                 workTile(),
                 workTile(),
                 workTile(),
-              ]))
+              ])),
         ],
       ),
+      floatingActionButton: FloatingActionButton.extended(
+        label: Text('Resumé'),
+        onPressed: _resumeLink,
+        icon: Icon(Icons.document_scanner_rounded),
+        shape: RoundedRectangleBorder(side: BorderSide(width: 4.0, color: Colors.blue,)),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 
@@ -259,44 +266,6 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ));
-  }
-
-  Widget resumeButton() {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(bottom: 32),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(4),
-            child: Stack(children: [
-              Positioned.fill(
-                child: Container(
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: <Color>[
-                        Color(0xFF0D47A1),
-                        Color(0xFF1976D2),
-                        Color(0xFF42A5F5),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              TextButton(
-                style: TextButton.styleFrom(
-                  padding: const EdgeInsets.all(16.0),
-                  primary: Colors.black,
-                  textStyle: const TextStyle(fontSize: 20),
-                ),
-                onPressed: _resumeLink,
-                child: const Text('Resumé'),
-              ),
-            ]),
-          ),
-        ),
-      ],
-    );
   }
 
   _resumeLink() async {
