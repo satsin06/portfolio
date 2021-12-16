@@ -48,6 +48,12 @@ dev_dependencies:
   animated_text_kit: ^4.2.1
   url_launcher: ^6.0.15
   font_awesome_flutter: ^9.2.0
+  flutter_launcher_icons: ^0.9.2
+
+flutter_icons:
+  image_path: "assets/avatar.jpg"
+  android: true
+  web: true
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
