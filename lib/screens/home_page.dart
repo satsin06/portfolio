@@ -305,7 +305,7 @@ class _HomePageState extends State<HomePage> {
                 height: 20,
               ),
               const Text(
-                "Machine Learning from scratch in Python and Successfully analyzed on the EPL data set.",
+                "Fitness app created using flutter and firebase in Spanish language, with mutiple functionalities like gallery view, alarm, diet maintainance, weight tracker etc. ",
                 style: TextStyle(fontSize: 16, color: Colors.black38),
               ),
             ],
