@@ -379,6 +379,7 @@ class _HomePageState extends State<HomePage> {
               height: screenSize.height * 0.05,
             ),
             Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Icon(
                   Icons.home_work,
@@ -389,7 +390,7 @@ class _HomePageState extends State<HomePage> {
                   width: screenSize.width * 0.02,
                 ),
                 Text(
-                  'Shanti Kunj, Road No. 04,\nEast Indira Nagar, \nKankarbagh, \nPatna - 800020',
+                  'Shanti Kunj, Road No. 04,\nEast Indira Nagar, Kankarbagh, \nPatna - 800020',
                   style: TextStyle(color: Colors.black38, fontSize: 20),
                 )
               ],
@@ -465,15 +466,18 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   IconButton(
-                      icon: FaIcon(FontAwesomeIcons.twitter, color: Colors.blue),
+                      icon:
+                          FaIcon(FontAwesomeIcons.twitter, color: Colors.blue),
                       onPressed: _twitter),
-                      IconButton(
-                      icon: FaIcon(FontAwesomeIcons.github, color: Colors.white54),
+                  IconButton(
+                      icon: FaIcon(FontAwesomeIcons.github,
+                          color: Colors.white54),
                       onPressed: _github),
-                      IconButton(
-                      icon: FaIcon(FontAwesomeIcons.linkedin, color: Colors.blue),
+                  IconButton(
+                      icon:
+                          FaIcon(FontAwesomeIcons.linkedin, color: Colors.blue),
                       onPressed: _linkedIn),
-                      IconButton(
+                  IconButton(
                       icon: Icon(Icons.email_sharp, color: Colors.white54),
                       onPressed: _emailTo),
                 ],
@@ -482,7 +486,10 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 12,
             ),
-            Text('It\'s a Bird | It\'s a Plane | It\'s SATSIN06', style: TextStyle(color: Colors.white54),)
+            Text(
+              'It\'s a Bird | It\'s a Plane | It\'s SATSIN06',
+              style: TextStyle(color: Colors.white54),
+            )
           ],
         ));
   }
@@ -529,8 +536,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   _twitter() async {
-    const url =
-        'https://twitter.com/satyamsinha9404';
+    const url = 'https://twitter.com/satyamsinha9404';
     if (await canLaunch(url)) {
       await launch(url);
     } else {
@@ -539,8 +545,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   _github() async {
-    const url =
-        'https://github.com/satsin06';
+    const url = 'https://github.com/satsin06';
     if (await canLaunch(url)) {
       await launch(url);
     } else {
@@ -549,13 +554,11 @@ class _HomePageState extends State<HomePage> {
   }
 
   _linkedIn() async {
-    const url =
-        'https://www.linkedin.com/in/satyam-sinha-a0b2b6169/';
+    const url = 'https://www.linkedin.com/in/satyam-sinha-a0b2b6169/';
     if (await canLaunch(url)) {
       await launch(url);
     } else {
       throw 'Could not launch $url';
     }
   }
-
 }
