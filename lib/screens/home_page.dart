@@ -43,15 +43,35 @@ class _HomePageState extends State<HomePage> {
                     height: screenSize.height / 15,
                   ),
                   recentWork(),
-                  coachApp(),
+                  Container(
+                    alignment: Alignment.topLeft,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        coachApp(),
+                        SizedBox(
+                          width: screenSize.width * 0.1,
+                        ),
+                        duitStores(),
+                      ],
+                    ),
+                  ),
                   SizedBox(
                     height: screenSize.height / 15,
                   ),
-                  duitStores(),
                   SizedBox(
                     height: screenSize.height / 15,
                   ),
-                  bottomBar()
+                  const Divider(
+                    thickness: 2.0,
+                    height: 10,
+                    indent: 30,
+                    endIndent: 30,
+                  ),
+                  SizedBox(
+                    height: screenSize.height / 10,
+                  ),
+                  aboutMe()
                 ],
               ),
             ),
@@ -59,18 +79,28 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
-        label: Text('Resumé'),
+        label: Text(
+          'Resumé',
+          style: TextStyle(color: Colors.black),
+        ),
         onPressed: _resumeLink,
-        icon: Icon(Icons.document_scanner_rounded),
+        icon: Icon(
+          Icons.document_scanner_rounded,
+          color: Colors.black,
+        ),
+        backgroundColor: Colors.white,
         shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
             side: BorderSide(
-          width: 4.0,
-          color: Colors.blue,
-        )),
+              width: 4.0,
+              color: Colors.blue,
+            )),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
+
+  /// Widgets
 
   Widget appBar() {
     var screenSize = MediaQuery.of(context).size;
@@ -236,108 +266,185 @@ class _HomePageState extends State<HomePage> {
 
   Widget coachApp() {
     var screenSize = MediaQuery.of(context).size;
-    return Padding(
-        padding: EdgeInsets.symmetric(horizontal: screenSize.width / 6),
-        child: Container(
-          alignment: Alignment.topLeft,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
+    return Container(
+      alignment: Alignment.topLeft,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: InkWell(
+        onTap: _coachApp,
+        child: SizedBox(
+          width: screenSize.width * 0.35,
+          height: screenSize.height * 0.5,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                'assets/coachapp.PNG',
+                fit: BoxFit.fill,
+                height: 250,
+                //scale: 4,
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              const FittedBox(
+                fit: BoxFit.fitWidth,
+                child: Text(
+                  'Coach App',
+                  maxLines: 1,
+                  style: TextStyle(fontSize: 28, color: Colors.black45),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const Text(
+                "Machine Learning from scratch in Python and Successfully analyzed on the EPL data set.",
+                style: TextStyle(fontSize: 16, color: Colors.black38),
+              ),
+            ],
           ),
-          child: InkWell(
-            onTap: _coachApp,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Image.asset(
-                  'assets/coachapp.PNG',
-                  fit: BoxFit.fill,
-                  height: 250,
-                  //scale: 4,
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                const FittedBox(
-                  fit: BoxFit.fitWidth,
-                  child: Text(
-                    'Coach App',
-                    maxLines: 1,
-                    style: TextStyle(fontSize: 28, color: Colors.black45),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Text(
-                  "Machine Learning from scratch in Python and Successfully analyzed on the EPL data set.",
-                  style: TextStyle(fontSize: 16, color: Colors.black38),
-                ),
-              ],
-            ),
-          ),
-        ));
+        ),
+      ),
+    );
   }
 
   Widget duitStores() {
     var screenSize = MediaQuery.of(context).size;
-    return Padding(
-        padding: EdgeInsets.symmetric(horizontal: screenSize.width / 6),
-        child: Container(
-          alignment: Alignment.topLeft,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
+    return Container(
+      alignment: Alignment.topLeft,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: InkWell(
+        onTap: _duitStore,
+        child: SizedBox(
+          width: screenSize.width * 0.35,
+          height: screenSize.height * 0.5,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                'assets/duit.JPEG',
+                fit: BoxFit.fill,
+                height: 250,
+                //scale: 4,
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              const FittedBox(
+                fit: BoxFit.fitWidth,
+                child: Text(
+                  'Duit Stores',
+                  maxLines: 1,
+                  style: TextStyle(fontSize: 28, color: Colors.black45),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const Text(
+                "Software Engineering intern in android app development in flutter from scratch. Basically, the main motive of this app is to make all local stores online and hasslefree daily shopping",
+                style: TextStyle(fontSize: 16, color: Colors.black38),
+              ),
+            ],
           ),
-          child: InkWell(
-            onTap: _duitStore,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Image.asset(
-                  'assets/duit.JPEG',
-                  fit: BoxFit.fill,
-                  height: 250,
-                  //scale: 4,
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                const FittedBox(
-                  fit: BoxFit.fitWidth,
-                  child: Text(
-                    'Duit Stores',
-                    maxLines: 1,
-                    style: TextStyle(fontSize: 28, color: Colors.black45),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Text(
-                  "Machine Learning from scratch in Python and Successfully analyzed on the EPL data set.",
-                  style: TextStyle(fontSize: 16, color: Colors.black38),
-                ),
-              ],
-            ),
-          ),
-        ));
+        ),
+      ),
+    );
   }
 
-  Widget bottomBar() {
+  Widget aboutMe() {
     var screenSize = MediaQuery.of(context).size;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: screenSize.width / 6),
       child: Container(
         alignment: Alignment.topLeft,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Get In Touch')
+            Text(
+              'Get In Touch',
+              maxLines: 1,
+              style: TextStyle(fontSize: 32, color: Colors.black54),
+            ),
+            SizedBox(
+              height: screenSize.height * 0.05,
+            ),
+            Row(
+              children: [
+                Icon(
+                  Icons.home_work,
+                  size: 42,
+                  color: Colors.black38,
+                ),
+                SizedBox(
+                  width: screenSize.width * 0.04,
+                ),
+                Text(
+                  'Shanti Kunj, Road No. 04,\nEast Indira Nagar, \nKankarbagh, \nPatna - 800020',
+                  style: TextStyle(color: Colors.black38, fontSize: 20),
+                )
+              ],
+            ),
+            SizedBox(
+              height: screenSize.height * 0.02,
+            ),
+            Row(
+              children: [
+                Icon(
+                  Icons.phone_android_sharp,
+                  size: 42,
+                  color: Colors.black38,
+                ),
+                SizedBox(
+                  width: screenSize.width * 0.04,
+                ),
+                Text(
+                  '+91-88738-53869',
+                  style: TextStyle(color: Colors.black38, fontSize: 20),
+                )
+              ],
+            ),
+            SizedBox(
+              height: screenSize.height * 0.02,
+            ),
+            InkWell(
+              onTap: _emailTo,
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.email_sharp,
+                    size: 42,
+                    color: Colors.black38,
+                  ),
+                  SizedBox(
+                    width: screenSize.width * 0.04,
+                  ),
+                  Text(
+                    'satyamsinha9404@ducic.ac.in',
+                    style: TextStyle(
+                        color: Colors.black38,
+                        fontSize: 20,
+                        decoration: TextDecoration.underline),
+                  )
+                ],
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 
+  Widget bottomBar() {
+    return Container();
+  }
+
   /// URL Links
+
   _resumeLink() async {
     const url =
         'https://drive.google.com/file/d/1H8gvog0lNfqWDLZ-VTOxBMkaxa96BRu3/view?usp=sharing';
@@ -357,14 +464,23 @@ class _HomePageState extends State<HomePage> {
       throw 'Could not launch $url';
     }
   }
-}
 
-_duitStore() async {
-  const url =
-      'https://docs.google.com/document/d/1s056qAW1inmFRQFeBsFL9y48kxqYOsCYiEXvRP7obLY/edit?usp=sharing';
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    throw 'Could not launch $url';
+  _duitStore() async {
+    const url =
+        'https://docs.google.com/document/d/1s056qAW1inmFRQFeBsFL9y48kxqYOsCYiEXvRP7obLY/edit?usp=sharing';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  _emailTo() async {
+    const url = 'mailto:satyamsinha9404@ducic.ac.in';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }
