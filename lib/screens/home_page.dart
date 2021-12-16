@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/rendering.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -69,9 +70,13 @@ class _HomePageState extends State<HomePage> {
                     endIndent: 30,
                   ),
                   SizedBox(
+                    height: screenSize.height / 15,
+                  ),
+                  aboutMe(),
+                  SizedBox(
                     height: screenSize.height / 10,
                   ),
-                  aboutMe()
+                  bottomBar()
                 ],
               ),
             ),
@@ -377,11 +382,11 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Icon(
                   Icons.home_work,
-                  size: 42,
+                  size: 32,
                   color: Colors.black38,
                 ),
                 SizedBox(
-                  width: screenSize.width * 0.04,
+                  width: screenSize.width * 0.02,
                 ),
                 Text(
                   'Shanti Kunj, Road No. 04,\nEast Indira Nagar, \nKankarbagh, \nPatna - 800020',
@@ -396,11 +401,11 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Icon(
                   Icons.phone_android_sharp,
-                  size: 42,
+                  size: 32,
                   color: Colors.black38,
                 ),
                 SizedBox(
-                  width: screenSize.width * 0.04,
+                  width: screenSize.width * 0.02,
                 ),
                 Text(
                   '+91-88738-53869',
@@ -417,11 +422,11 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Icon(
                     Icons.email_sharp,
-                    size: 42,
+                    size: 32,
                     color: Colors.black38,
                   ),
                   SizedBox(
-                    width: screenSize.width * 0.04,
+                    width: screenSize.width * 0.02,
                   ),
                   Text(
                     'satyamsinha9404@ducic.ac.in',
@@ -440,7 +445,46 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget bottomBar() {
-    return Container();
+    var screenSize = MediaQuery.of(context).size;
+    //const speed = Duration(milliseconds: 200);
+    return Container(
+        height: screenSize.height / 3,
+        decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.zero),
+            image: DecorationImage(
+              image: AssetImage(
+                'assets/background.jpg',
+              ),
+              fit: BoxFit.cover,
+            )),
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.only(top: screenSize.height * 0.1),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
+                      icon: FaIcon(FontAwesomeIcons.twitter, color: Colors.blue),
+                      onPressed: _twitter),
+                      IconButton(
+                      icon: FaIcon(FontAwesomeIcons.github, color: Colors.white54),
+                      onPressed: _github),
+                      IconButton(
+                      icon: FaIcon(FontAwesomeIcons.linkedin, color: Colors.blue),
+                      onPressed: _linkedIn),
+                      IconButton(
+                      icon: Icon(Icons.email_sharp, color: Colors.white54),
+                      onPressed: _emailTo),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 12,
+            ),
+            Text('It\'s a Bird | It\'s a Plane | It\'s SATSIN06', style: TextStyle(color: Colors.white54),)
+          ],
+        ));
   }
 
   /// URL Links
@@ -483,4 +527,35 @@ class _HomePageState extends State<HomePage> {
       throw 'Could not launch $url';
     }
   }
+
+  _twitter() async {
+    const url =
+        'https://twitter.com/satyamsinha9404';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  _github() async {
+    const url =
+        'https://github.com/satsin06';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  _linkedIn() async {
+    const url =
+        'https://www.linkedin.com/in/satyam-sinha-a0b2b6169/';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
 }
