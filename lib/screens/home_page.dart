@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/rendering.dart';
@@ -41,28 +43,30 @@ class _HomePageState extends State<HomePage> {
                     height: screenSize.height / 15,
                   ),
                   recentWork(),
+                  coachApp(),
+                  SizedBox(
+                    height: screenSize.height / 15,
+                  ),
+                  duitStores(),
+                  SizedBox(
+                    height: screenSize.height / 15,
+                  ),
+                  bottomBar()
                 ],
               ),
             ),
           ),
-          SliverGrid(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 1,
-                  crossAxisSpacing: 4,
-                  mainAxisSpacing: 4,
-                  childAspectRatio: (1 / 0.85)),
-              delegate: SliverChildListDelegate([
-                workTile(),
-                workTile(),
-                workTile(),
-              ])),
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
         label: Text('Resumé'),
         onPressed: _resumeLink,
         icon: Icon(Icons.document_scanner_rounded),
-        shape: RoundedRectangleBorder(side: BorderSide(width: 4.0, color: Colors.blue,)),
+        shape: RoundedRectangleBorder(
+            side: BorderSide(
+          width: 4.0,
+          color: Colors.blue,
+        )),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
@@ -230,44 +234,110 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget workTile() {
-    //var screenSize = MediaQuery.of(context).size;
+  Widget coachApp() {
+    var screenSize = MediaQuery.of(context).size;
     return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 36.0),
+        padding: EdgeInsets.symmetric(horizontal: screenSize.width / 6),
         child: Container(
+          alignment: Alignment.topLeft,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Image.asset(
-                'assets/coachapp.PNG',
-                fit: BoxFit.cover,
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              const FittedBox(
-                fit: BoxFit.fitWidth,
-                child: Text(
-                  'Coach App',
-                  maxLines: 1,
-                  style: TextStyle(fontSize: 28, color: Colors.black45),
+          child: InkWell(
+            onTap: _coachApp,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Image.asset(
+                  'assets/coachapp.PNG',
+                  fit: BoxFit.fill,
+                  height: 250,
+                  //scale: 4,
                 ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const Text(
-                "Machine Learning from scratch in Python and Successfully analyzed on the EPL data set.",
-                style: TextStyle(fontSize: 16, color: Colors.black38),
-              ),
-            ],
+                const SizedBox(
+                  height: 16,
+                ),
+                const FittedBox(
+                  fit: BoxFit.fitWidth,
+                  child: Text(
+                    'Coach App',
+                    maxLines: 1,
+                    style: TextStyle(fontSize: 28, color: Colors.black45),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Text(
+                  "Machine Learning from scratch in Python and Successfully analyzed on the EPL data set.",
+                  style: TextStyle(fontSize: 16, color: Colors.black38),
+                ),
+              ],
+            ),
           ),
         ));
   }
 
+  Widget duitStores() {
+    var screenSize = MediaQuery.of(context).size;
+    return Padding(
+        padding: EdgeInsets.symmetric(horizontal: screenSize.width / 6),
+        child: Container(
+          alignment: Alignment.topLeft,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: InkWell(
+            onTap: _duitStore,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Image.asset(
+                  'assets/duit.JPEG',
+                  fit: BoxFit.fill,
+                  height: 250,
+                  //scale: 4,
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                const FittedBox(
+                  fit: BoxFit.fitWidth,
+                  child: Text(
+                    'Duit Stores',
+                    maxLines: 1,
+                    style: TextStyle(fontSize: 28, color: Colors.black45),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Text(
+                  "Machine Learning from scratch in Python and Successfully analyzed on the EPL data set.",
+                  style: TextStyle(fontSize: 16, color: Colors.black38),
+                ),
+              ],
+            ),
+          ),
+        ));
+  }
+
+  Widget bottomBar() {
+    var screenSize = MediaQuery.of(context).size;
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: screenSize.width / 6),
+      child: Container(
+        alignment: Alignment.topLeft,
+        child: Column(
+          children: [
+            Text('Get In Touch')
+          ],
+        ),
+      ),
+    );
+  }
+
+  /// URL Links
   _resumeLink() async {
     const url =
         'https://drive.google.com/file/d/1H8gvog0lNfqWDLZ-VTOxBMkaxa96BRu3/view?usp=sharing';
@@ -276,5 +346,25 @@ class _HomePageState extends State<HomePage> {
     } else {
       throw 'Could not launch $url';
     }
+  }
+
+  _coachApp() async {
+    const url =
+        'https://docs.google.com/document/d/1qvgsWfjKIPriRB7wqPqa12bTqp_OLOkxzH6qidQFjCA/edit?usp=sharing';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+}
+
+_duitStore() async {
+  const url =
+      'https://docs.google.com/document/d/1s056qAW1inmFRQFeBsFL9y48kxqYOsCYiEXvRP7obLY/edit?usp=sharing';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
   }
 }
