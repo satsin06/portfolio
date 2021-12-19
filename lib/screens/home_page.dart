@@ -281,35 +281,46 @@ class _HomePageState extends State<HomePage> {
         child: SizedBox(
           width: screenSize.width * 0.35,
           height: screenSize.height * 0.5,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Image.asset(
-                'assets/coachapp.PNG',
-                fit: BoxFit.fill,
-                height: 250,
-                //scale: 4,
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              const FittedBox(
-                fit: BoxFit.fitWidth,
-                child: Text(
-                  'Coach App',
-                  maxLines: 1,
-                  style: TextStyle(fontSize: 28, color: Colors.black45),
+          child: Stack(children: [
+            Positioned(
+                bottom: 1,
+                right: 1,
+                child: IconButton(
+                    onPressed: _coachAppGitHub,
+                    icon: FaIcon(
+                      FontAwesomeIcons.github,
+                      color: Colors.black,
+                    ))),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Image.asset(
+                  'assets/coachapp.PNG',
+                  fit: BoxFit.fill,
+                  height: 250,
+                  //scale: 4,
                 ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const Text(
-                "Fitness app created using flutter and firebase in Spanish language, with mutiple functionalities like gallery view, alarm, diet maintainance, weight tracker etc. ",
-                style: TextStyle(fontSize: 16, color: Colors.black38),
-              ),
-            ],
-          ),
+                const SizedBox(
+                  height: 16,
+                ),
+                const FittedBox(
+                  fit: BoxFit.fitWidth,
+                  child: Text(
+                    'Coach App',
+                    maxLines: 1,
+                    style: TextStyle(fontSize: 28, color: Colors.black45),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Text(
+                  "Fitness app created using flutter and firebase in Spanish language, with mutiple functionalities like gallery view, alarm, diet maintainance, weight tracker etc. ",
+                  style: TextStyle(fontSize: 16, color: Colors.black38),
+                ),
+              ],
+            ),
+          ]),
         ),
       ),
     );
@@ -327,35 +338,46 @@ class _HomePageState extends State<HomePage> {
         child: SizedBox(
           width: screenSize.width * 0.35,
           height: screenSize.height * 0.5,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Image.asset(
-                'assets/duit.JPEG',
-                fit: BoxFit.fill,
-                height: 250,
-                //scale: 4,
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              const FittedBox(
-                fit: BoxFit.fitWidth,
-                child: Text(
-                  'Duit Stores',
-                  maxLines: 1,
-                  style: TextStyle(fontSize: 28, color: Colors.black45),
+          child: Stack(children: [
+            Positioned(
+                bottom: 1,
+                right: 1,
+                child: IconButton(
+                    onPressed: _duitStoresGitHub,
+                    icon: FaIcon(
+                      FontAwesomeIcons.github,
+                      color: Colors.black,
+                    ))),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Image.asset(
+                  'assets/duit.JPEG',
+                  fit: BoxFit.fill,
+                  height: 250,
+                  //scale: 4,
                 ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const Text(
-                "Software Engineering intern in android app development in flutter from scratch. Basically, the main motive of this app is to make all local stores online and hasslefree daily shopping",
-                style: TextStyle(fontSize: 16, color: Colors.black38),
-              ),
-            ],
-          ),
+                const SizedBox(
+                  height: 16,
+                ),
+                const FittedBox(
+                  fit: BoxFit.fitWidth,
+                  child: Text(
+                    'Duit Stores',
+                    maxLines: 1,
+                    style: TextStyle(fontSize: 28, color: Colors.black45),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Text(
+                  "Software Engineering intern in android app development in flutter from scratch. Basically, the main motive of this app is to make all local stores online and hasslefree daily shopping",
+                  style: TextStyle(fontSize: 16, color: Colors.black38),
+                ),
+              ],
+            ),
+          ]),
         ),
       ),
     );
@@ -555,6 +577,24 @@ class _HomePageState extends State<HomePage> {
 
   _linkedIn() async {
     const url = 'https://www.linkedin.com/in/satyam-sinha-a0b2b6169/';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  _coachAppGitHub() async {
+    const url = 'https://github.com/satsin06/coach_app';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  _duitStoresGitHub() async {
+    const url = 'https://github.com/satsin06/duit-stores';
     if (await canLaunch(url)) {
       await launch(url);
     } else {
