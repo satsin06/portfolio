@@ -520,7 +520,7 @@ class _HomePageState extends State<HomePage> {
 
   _resumeLink() async {
     const url =
-        'https://drive.google.com/file/d/1H8gvog0lNfqWDLZ-VTOxBMkaxa96BRu3/view?usp=sharing';
+        'https://drive.google.com/file/d/1ds7cjmyOdOIdTiHM1Pvqlg0F9v22X3am/view?usp=sharing';
     if (await canLaunch(url)) {
       await launch(url);
     } else {
