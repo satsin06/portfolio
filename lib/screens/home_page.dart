@@ -44,6 +44,8 @@ class _HomePageState extends State<HomePage> {
                     height: screenSize.height / 15,
                   ),
                   recentWork(),
+                  // Adding list view instead of container 
+                  
                   Container(
                     alignment: Alignment.topLeft,
                     child: Row(
@@ -315,7 +317,7 @@ class _HomePageState extends State<HomePage> {
                   height: 20,
                 ),
                 const Text(
-                  "Fitness app created using flutter and firebase in Spanish language, with mutiple functionalities like gallery view, alarm, diet maintainance, weight tracker etc. ",
+                  "Fitness app created using flutter and firebase in Spanish language, with mutiple functionalities like gallery view, alarm, diet maintenance, weight tracker etc. ",
                   style: TextStyle(fontSize: 16, color: Colors.black38),
                 ),
               ],
