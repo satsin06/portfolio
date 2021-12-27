@@ -115,10 +115,6 @@ class _HomePageState extends State<HomePage> {
     return Container(
         height: screenSize.height / 1.5,
         decoration: const BoxDecoration(
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(100),
-              bottomRight: Radius.circular(100),
-            ),
             image: DecorationImage(
               image: AssetImage(
                 'assets/background.jpg',
